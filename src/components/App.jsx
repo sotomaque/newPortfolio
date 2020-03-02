@@ -15,24 +15,50 @@ function App() {
   const [projects, setProjects] = useState([]);
   const [contact, setContact] = useState({});
   const [footer, setFooter] = useState({});
+  const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  const BASE_URL = "https://gitconnected.com/v1/portfolio/sotomaque";
+
+  const getUserData = () => {
+    setLoading(true)
+    fetch(BASE_URL, { crossdomain: true })
+      .then(res => res.json())
+      .then(user => {
+        setUser(user);
+        setLoading(false);
+        setProjects([...user.projects]);
+        setAbout({ name: user.basics.name, label: user.basics.label, headline: user.basics.headline, img: aboutData.img,
+          summary: user.basics.summary, yearsOfExperience: user.basics.yearsOfExperience, region: user.basics.region }); 
+    });
+  }
 
   useEffect(() => {
-    setHero({ ...heroData });
-    setAbout({ ...aboutData });
-    setProjects([...projectsData]);
+    getUserData();
+    setHero({ ...heroData }); // name, title, subtitle, cta
+    setAbout({ ...aboutData }); // paragraphOne, paragraphTwo, paragraphThree, resume, img
     setContact({ ...contactData });
     setFooter({ ...footerData });
   }, []);
 
-  return (
-    <PortfolioProvider value={{ hero, about, projects, contact, footer }}>
-      <Hero />
-      <About />
-      <Projects />
-      <Contact />
-      <Footer />
-    </PortfolioProvider>
-  );
+  if (loading) {
+    return (
+      <div>Loading...</div>
+    )
+  } else {
+
+    return (
+      <PortfolioProvider value={{ about, hero, projects, contact, footer }}>
+        <Hero />
+        <About />
+        <Projects />
+        <Contact />
+        <Footer />
+      </PortfolioProvider>
+    );
+  }
+
+  
 }
 
 export default App;

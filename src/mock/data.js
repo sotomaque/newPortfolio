@@ -2,15 +2,15 @@ import uuidv1 from 'uuid/v1';
 
 // HEAD DATA
 export const headData = {
-  title: '', // e.g: 'Name | Developer'
-  lang: '', // e.g: en, es, fr, jp
-  description: '', // e.g: Welcome to my website
+  title: 'Enrique Sotomayor | Developer', // e.g: 'Name | Developer'
+  lang: 'JS, Python', // e.g: en, es, fr, jp
+  description: 'Software Engineer Based out of Seattle, Washington', // e.g: Welcome to my website
 };
 
 // HERO DATA
 export const heroData = {
   title: '',
-  name: '',
+  name: 'Enrique Sotomayor',
   subtitle: '',
   cta: '',
 };
@@ -59,22 +59,12 @@ export const projectsData = [
 export const contactData = {
   cta: '',
   btn: '',
-  email: '',
+  email: 'sotomaque@gmail.com',
 };
 
 // FOOTER DATA
 export const footerData = {
   networks: [
-    {
-      id: uuidv1(),
-      name: 'twitter',
-      url: '',
-    },
-    {
-      id: uuidv1(),
-      name: 'codepen',
-      url: '',
-    },
     {
       id: uuidv1(),
       name: 'linkedin',
@@ -83,12 +73,12 @@ export const footerData = {
     {
       id: uuidv1(),
       name: 'github',
-      url: '',
+      url: 'https://github.com/sotomaque',
     },
   ],
 };
 
 // Github start/fork buttons
 export const githubButtons = {
-  isEnabled: true, // set to false to disable the GitHub stars/fork buttons
+  isEnabled: false, // set to false to disable the GitHub stars/fork buttons
 };
