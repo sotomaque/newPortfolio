@@ -3,7 +3,10 @@ import Fade from 'react-reveal/Fade';
 import Tilt from 'react-tilt';
 import { Container, Row, Col } from 'react-bootstrap';
 import PortfolioContext from '../../context/context';
+import ProjectsMobile from './ProjectsMobile.jsx';
+import ProjectDesktopImageLeft from './ProjectDesktopImageLeft.jsx';
 import Title from '../Title/Title';
+import ProjectDesktopImageRight from './ProjectDesktopImageRight';
 
 const Projects = () => {
   const { projects } = useContext(PortfolioContext);
@@ -21,230 +24,38 @@ const Projects = () => {
     }
   }, []);
 
-  return (
-    <section id="projects">
-      <Container>
-        <div className="project-wrapper">
-          <Title title="Projects" />
-          {projects.map( (project, index) => {
-            const { displayName, summary, website, githubUrl, languages, libraries, images } = project;
-            let img  = images[0]?.resolutions?.desktop?.url;
-            {/* alternate image layout */}
-            if (index % 2 == 0) {
-              return (
-                <Row key={index}>
-                  {/* if theres an image */}
-                  {
-                    img &&
-                    <Col lg={8} sm={12}>
-                      <Fade
-                        right={isDesktop}
-                        bottom={isMobile}
-                        duration={1000}
-                        delay={1000}
-                        distance="30px"
-                      >
-                        <div className="project-wrapper__image">
-                          <a
-                            href={githubUrl || '#!'}
-                            target="_blank"
-                            aria-label="Project Link"
-                            rel="noopener noreferrer"
-                          >
-                            <Tilt
-                              options={{
-                                reverse: false,
-                                max: 8,
-                                perspective: 1000,
-                                scale: 1,
-                                speed: 300,
-                                transition: true,
-                                axis: null,
-                                reset: true,
-                                easing: 'cubic-bezier(.03,.98,.52,.99)',
-                              }}
-                            >
-                              <div data-tilt className="thumbnail rounded">
-                                <img alt={displayName} src={img} style={{maxWidth: "460px", maxHeight: "225px"}} /> 
-                              </div>
-                            </Tilt>
-                          </a>
-                        </div>
-                      </Fade>
-                    </Col>
-                  }
-                  {/* project name, summary, links */}
-                  <Col lg={4} sm={12}>
-                    <Fade
-                      left={isDesktop}
-                      bottom={isMobile}
-                      duration={1000}
-                      delay={500}
-                      distance="30px"
-                    >
-                      <div className="project-wrapper__text">
-                        <h3 className="project-wrapper__text-title">{displayName}</h3>
-                        <div>
-                          <p className="mb-4">{summary}</p>
-                        </div>
-                        {/* if theres a demo link */}
-                        {
-                          website && 
-                          <a
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="cta-btn cta-btn--hero"
-                            href={website}
-                          >
-                            See Demo
-                          </a>
-                        }
-                        {/* if theres a git link */}
-                        {
-                          githubUrl && 
-                          <a
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="cta-btn text-color-main"
-                            href={githubUrl}
-                          >
-                            Source Code
-                          </a>
-                        }
-                      </div>
-                      {/* if we have a list of languages */}
-                      {
-                        languages && 
-                        <div className="project-tag text-color-main">
-                          {languages.map((language, i) => {
-                            return (<p style={{padding: "10px"}} key={i}>{language}</p>)
-                          }) }
-                        </div>
-                      }
-                      {/* if we have a list of libraries */}
-                      {
-                        libraries && 
-                        <div className="project-tag text-color-main">
-                          {libraries.map((library, i) => {
-                            return (<p style={{padding: "10px"}} key={i}>{library}</p>)
-                          }) }
-                        </div>
-                      }
-                    </Fade>
-                  </Col>
-                </Row>
-              );
-            } else {
-              return (
-                <Row key={index}>
-                  {/* project name, summary, links */}
-                  <Col lg={4} sm={12}>
-                    <Fade
-                      left={isDesktop}
-                      bottom={isMobile}
-                      duration={1000}
-                      delay={500}
-                      distance="30px"
-                    >
-                      <div className="project-wrapper__text">
-                        <h3 className="project-wrapper__text-title">{displayName}</h3>
-                        <div>
-                          <p className="mb-4">{summary}</p>
-                        </div>
-                        {/* if theres a demo link */}
-                        {
-                          website && 
-                          <a
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="cta-btn cta-btn--hero"
-                            href={website || '#!'}
-                          >
-                            See Demo
-                          </a>
-                        }
-                        {/* if theres a git link */}
-                        {
-                          githubUrl && 
-                          <a
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="cta-btn text-color-main"
-                            href={githubUrl}
-                          >
-                            Source Code
-                          </a>
-                        }
-                      </div>
-                      {/* if we have a list of languages */}
-                      {
-                        languages && 
-                        <div className="project-tag text-color-main">
-                          {languages.map((language, i) => {
-                            return (<p style={{padding: "10px"}} key={i}>{language}</p>)
-                          }) }
-                        </div>
-                      }
-                      {/* if we have a list of libraries */}
-                      {
-                        libraries && 
-                        <div className="project-tag text-color-main">
-                          {libraries.map((library, i) => {
-                            return (<p style={{padding: "10px"}} key={i}>{library}</p>)
-                          }) }
-                        </div>
-                      }
-                    </Fade>
-                  </Col>
-                  {/* if theres an image */}
-                  {
-                    img &&
-                    <Col lg={8} sm={12}>
-                    <Fade
-                      right={isDesktop}
-                      bottom={isMobile}
-                      duration={1000}
-                      delay={1000}
-                      distance="30px"
-                    >
-                      <div className="project-wrapper__image">
-                        <a
-                          href={githubUrl || '#!'}
-                          target="_blank"
-                          aria-label="Project Link"
-                          rel="noopener noreferrer"
-                        >
-                          <Tilt
-                            options={{
-                              reverse: false,
-                              max: 8,
-                              perspective: 1000,
-                              scale: 1,
-                              speed: 300,
-                              transition: true,
-                              axis: null,
-                              reset: true,
-                              easing: 'cubic-bezier(.03,.98,.52,.99)',
-                            }}
-                          >
-                            <div data-tilt className="thumbnail rounded">
-                              <img alt={displayName} src={img} style={{maxWidth: "460px", maxHeight: "225px"}} />
-                            </div>
-                          </Tilt>
-                        </a>
-                      </div>
-                    </Fade>
-                  </Col>
-                  }
-                </Row>
-              );
+  if (isMobile) {
+    return (
+      <ProjectsMobile projects={projects}/>
+    )
+  } else {
+    return (
+      <section id="projects">
+        <Container>
+          <div className="project-wrapper">
+            <Title title="Projects" />
+            {
+              projects.map((project, index) => {
+                // const { displayName, summary, website, githubUrl, languages, libraries, images } = project;
+                // let img  = images[0]?.resolutions?.desktop?.url;
+            
+                if (index % 2 == 0) {
+                  return (
+                    <ProjectDesktopImageLeft project={project} key={index} />
+                  );
+                } else {
+                  return (
+                    <ProjectDesktopImageRight project={project} key={index} />
+                  );
+                }
+              })
             }
-           
-          })}
         </div>
       </Container>
     </section>
-  );
+    );
+  }
+
 };
 
 export default Projects;
