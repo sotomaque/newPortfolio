@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import Fade from 'react-reveal/Fade';
 import Tilt from 'react-tilt';
 import { Container, Row, Col } from 'react-bootstrap';
-import PortfolioContext from '../../context/context';
 import Title from '../Title/Title';
 
 const ProjectsMobile = ({ projects }) => {
@@ -18,24 +17,13 @@ const ProjectsMobile = ({ projects }) => {
             
                         return (
                             <Row key={index}>
-                                {img &&
+                                {
+                                    img &&
                                     <Col lg={8} sm={12}>
                                         <Fade right={false} bottom={true} duration={1000} delay={1000} distance="30px">
                                             <div className="project-wrapper__image">
                                                 <a href={githubUrl || '#!'} target="_blank" aria-label="Project Link"  rel="noopener noreferrer" >
-                                                    <Tilt
-                                                        options={{
-                                                            reverse: false,
-                                                            max: 8,
-                                                            perspective: 1000,
-                                                            scale: 1,
-                                                            speed: 300,
-                                                            transition: true,
-                                                            axis: null,
-                                                            reset: true,
-                                                            easing: 'cubic-bezier(.03,.98,.52,.99)',
-                                                        }}
-                                                    >
+                                                    <Tilt options={{ reverse: false, max: 8, perspective: 1000, scale: 1, speed: 300, transition: true, axis: null, reset: true, easing: 'cubic-bezier(.03,.98,.52,.99)'}} >
                                                         <div data-tilt className="thumbnail rounded">
                                                             <img alt={displayName} src={img} style={{maxWidth: "300px"}} /> 
                                                         </div>
@@ -45,7 +33,6 @@ const ProjectsMobile = ({ projects }) => {
                                         </Fade>
                                     </Col>
                                 }
-            
                                 <Col lg={4} sm={12}>
                                     <Fade left={false} bottom={true} duration={1000} delay={500} distance="30px">
                                         <div className="project-wrapper__text">
@@ -56,13 +43,13 @@ const ProjectsMobile = ({ projects }) => {
                                         </div>
                                         {
                                             website && 
-                                            <a target="_blank" rel="noopener noreferrer" className="cta-btn cta-btn--hero" href={website} >
+                                            <a target="_blank" rel="noopener noreferrer" className="cta-btn cta-btn--hero" href={website}>
                                                 See Demo
                                             </a>
                                         }
                                         {
                                             githubUrl && 
-                                            <a target="_blank" rel="noopener noreferrer" className="cta-btn text-color-main" href={githubUrl} >
+                                            <a target="_blank" rel="noopener noreferrer" className="cta-btn text-color-main" href={githubUrl}>
                                                 Source Code
                                             </a>
                                         }
