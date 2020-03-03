@@ -49,19 +49,13 @@ const About = () => {
                   <p className="about-wrapper__info-text">
                     {label}
                   </p>
-                  
-                  {resume && (
-                    <span className="d-flex mt-3">
-                      <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="cta-btn cta-btn--resume"
-                        href={resume}
-                      >
-                        Resume
+                  <Fade left={isDesktop} bottom={isMobile} duration={1000} delay={1000} distance="30px">
+                    <p className="hero-cta">
+                      <a className="cta-btn cta-btn--resume" href={`https://gitconnected.com/sotomaque/resume`} target="_blank">
+                        View Resume
                       </a>
-                    </span>
-                  )}
+                    </p>
+                  </Fade>
                 </div>
               </Fade>
             </Col>

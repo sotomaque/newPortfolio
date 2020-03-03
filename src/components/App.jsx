@@ -4,6 +4,7 @@ import About from './About/About';
 import Projects from './Projects/Projects';
 import Contact from './Contact/Contact';
 import Footer from './Footer/Footer';
+import NavBar from './NavBar/NavBar';
 
 import { PortfolioProvider } from '../context/context';
 
@@ -27,7 +28,7 @@ function App() {
         setUser(user);
         setLoading(false);
         setProjects([...user.projects]);
-        setAbout({ name: user.basics.name, label: user.basics.label, headline: user.basics.headline, img: aboutData.img,
+        setAbout({ name: user.basics.name, label: user.basics.label, headline: user.basics.headline, img: aboutData.img, 
           summary: user.basics.summary, yearsOfExperience: user.basics.yearsOfExperience, region: user.basics.region }); 
     });
   }
@@ -43,9 +44,9 @@ function App() {
       <div>Loading...</div>
     )
   } else {
-
     return (
       <PortfolioProvider value={{ about, projects, contact, footer }}>
+        <NavBar />
         <Hero />
         <About />
         <Projects />

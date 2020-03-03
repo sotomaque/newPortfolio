@@ -1,6 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import Fade from 'react-reveal/Fade';
+import image from '../../images/project.jpg'
+console.log(image)
 
 const Header = () => {
   const [isDesktop, setIsDesktop] = useState(false);

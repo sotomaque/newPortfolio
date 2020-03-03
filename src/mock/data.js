@@ -68,7 +68,7 @@ export const footerData = {
     {
       id: uuidv1(),
       name: 'linkedin',
-      url: '',
+      url: 'https://www.linkedin.com/in/ensotomayor/',
     },
     {
       id: uuidv1(),

@@ -7,6 +7,7 @@ import { githubButtons } from '../../mock/data';
 
 const Footer = () => {
   const { footer } = useContext(PortfolioContext);
+  console.dir(footer)
   const { networks } = footer;
   const { isEnabled } = githubButtons;
 
@@ -35,8 +36,8 @@ const Footer = () => {
         </div>
         <hr />
         <p className="footer__text">
-          © {new Date().getFullYear()}
-          <a href="https://github.com/sotomaque" target="_blank" rel="noopener noreferrer">
+          © {new Date().getFullYear()}{' '}
+          <a href={"https://github.com/sotomaque"} target="_blank" rel="noopener noreferrer">
             Enrique Sotomayor
           </a>
         </p>
